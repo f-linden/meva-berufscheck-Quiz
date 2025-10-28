@@ -1,0 +1,199 @@
+@font-face {
+    font-family: 'Frutiger';
+    src: url('font/frutiger.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --radius: 18px;
+    --border-thickness: 4px;
+    --anim-duration: 5s;
+}
+
+body {
+            font-family: 'Frutiger', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+.quiz-frame {
+    position: relative;
+    border-radius: calc(var(--radius) + var(--border-thickness));
+    padding: var(--border-thickness);
+    background: #ffffff;
+}
+
+.quiz-container {
+    background: url('images/hintengrundpc-2.jpg') center/contain no-repeat;
+    border-radius: var(--radius);
+    padding: 28px 26px;
+    width: 1778px;
+    height: 880px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(0, 0, 0, 0.02);
+}
+.scan-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(1, 100, 99, 0), transparent);
+            animation: scan 3s linear infinite;
+}
+
+
+/* Glanz-Effekt */
+.quiz-container::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(255, 0, 0, 0), transparent 30%);
+    mix-blend-mode: overlay;
+}
+
+.question {
+
+    font-size: 28px;
+    margin-bottom: 40px;
+}
+
+.image-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container img {
+    max-width: 200%;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
+    transition: transform 0.5s;
+}
+
+.image-container img:hover {
+    transform: scale(1.05);
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 20px 0;
+}
+
+.options button {
+    flex: 0 1 auto;
+    padding: 6px;
+    border: 1px solid #000000;
+    border-radius: 3px;
+    background: #ffffff00;
+    color: #000000;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s ease;
+    min-width: 200px;
+}
+
+.options button:hover {
+    transform: scale(1.05);
+    background: #e20613;
+    color: #ffffff;
+    border-color: #8a010c;
+}
+
+.result-image {
+    max-width: 200%;
+    max-height: 400px;
+    margin-bottom: 10px;
+}
+
+.result-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    padding: 20px;
+    margin-top: -40px;
+}
+
+.result {
+    font-size: 24px;
+    text-align: center;
+    max-width: 80%;
+    margin: 20px auto;
+    animation: fadeIn 1s forwards;
+    opacity: 0;
+    line-height: 1.5;
+}
+
+.apply-button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 30px;
+    background-color: #e20613;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.apply-button:hover {
+    background-color: #8a010c;
+}
+
+.progress-bar {
+    width: 50%;
+    background: #e0e0e0;
+    border-radius: 5px;
+    margin: 60px auto 0;
+    height: 20px;
+    position: relative;
+}
+
+.progress {
+    height: 20px;
+    width: 0%;
+    margin: 0px;
+    background: #e20613;
+    border-radius: 5px;
+    transition: width 0.5s;
+}
+
+.question-counter {
+    text-align: center;
+    margin-top: 80px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+    background: rgba(255, 255, 255, 0);
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@keyframes fadeIn {
+    to {opacity: 1;}
+}
+
+
